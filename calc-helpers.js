@@ -40,4 +40,36 @@ function arrayMedian(arr) {
     }
 }
 
-module.exports = {stringToNumericArray, arrayMean, arrayMedian}
+// iterates over an array and returns an object showing how many times elements
+// repeat in the given array.
+function countEls(arr) {
+    const counter = {}
+    for (let i = 0; i < arr.length; i++) {
+        if (!counter[arr[i]]) {
+            counter[arr[i]] = 1;
+        }
+        else {
+            counter[arr[i]]++;
+        }
+    }
+    return counter
+}
+
+// uses countEls above to find the mode of an array
+function arrayMode(arr) {
+    const counter = countEls(arr);
+    let mostFound = 0;
+    let mostKey;
+    for(const [key, value] of Object.entries(counter)) {
+        if (value > mostFound) {
+            mostFound = value;
+            mostKey = [key];
+        }
+        if (value == mostFound && key != mostKey) {
+            mostKey.push(key)
+        }
+    }
+    return mostKey;
+}
+
+module.exports = {stringToNumericArray, arrayMean, arrayMedian, arrayMode}
