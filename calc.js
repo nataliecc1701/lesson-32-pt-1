@@ -26,14 +26,7 @@ app.get("/mean", function(request, response) {
         throw new ExpressError(message, 400)
     }
     
-    let sum = 0;
-    for(let i = 0; i < nums.length; i++) {
-        if(isNaN(nums[i])) {
-            throw new ExpressError(`${nums[i]} is not a number`, 400)
-        }
-        sum += parseFloat(nums[i])
-    }
-    ans.value = sum/nums.length
+    ans.value = calcs.arrayMean(nums);
     return response.json(ans)
 })
 

@@ -16,8 +16,16 @@ function stringToNumericArray(str, sep=',') {
     if (nums.some(isNaN)) {
         throw new CalcError(nums.find(isNaN))
     }
-    nums.forEach(parseFloat)
     return nums
 }
 
-module.exports = {stringToNumericArray}
+// takes an array of numbers and returns the mean
+function arrayMean(arr) {
+    let sum = 0;
+    for (i=0; i<arr.length; i++) {
+        sum += parseFloat(arr[i])
+    }
+    return sum/arr.length
+}
+
+module.exports = {stringToNumericArray, arrayMean}
