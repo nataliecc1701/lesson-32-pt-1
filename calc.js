@@ -30,6 +30,40 @@ app.get("/mean", function(request, response) {
     return response.json(ans)
 })
 
+app.get("/median", function(request, response) {
+    const ans = {operation: "median"}
+    let nums;
+    try {
+        nums = calcs.stringToNumericArray(request.query.nums)
+    }
+    catch(error) {
+        let message = "missing required parameter: nums"
+        if (error.message) {
+            message = `${error.message} is not a number`
+        }
+        throw new ExpressError(message, 400)
+    }
+    ans.value = calcs.arrayMedian(nums);
+    return response.json(ans)
+})
+
+app.get("/mode", function(request, response) {
+    const ans = {operation: "mode(s)"}
+    let nums;
+    try {
+        nums = calcs.stringToNumericArray(request.query.nums)
+    }
+    catch(error) {
+        let message = "missing required parameter: nums"
+        if (error.message) {
+            message = `${error.message} is not a number`
+        }
+        throw new ExpressError(message, 400)
+    }
+    ans.value = calcs.arrayMode(nums);
+    return response.json(ans)
+})
+
 // handle errors
 app.use(function(err, request, response, next) {
     const status = err.status || 500;
