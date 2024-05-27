@@ -16,14 +16,14 @@ function stringToNumericArray(str, sep=',') {
     if (nums.some(isNaN)) {
         throw new CalcError(nums.find(isNaN))
     }
-    return nums
+    return nums.map(parseFloat)
 }
 
 // takes an array of numbers and returns the mean
 function arrayMean(arr) {
     let sum = 0;
     for (i=0; i<arr.length; i++) {
-        sum += parseFloat(arr[i])
+        sum += arr[i]
     }
     return sum/arr.length
 }
