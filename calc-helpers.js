@@ -63,10 +63,10 @@ function arrayMode(arr) {
     for(const [key, value] of Object.entries(counter)) {
         if (value > mostFound) {
             mostFound = value;
-            mostKey = [key];
+            mostKey = [parseFloat(key)];
         }
         if (value == mostFound && key != mostKey) {
-            mostKey.push(key)
+            mostKey.push(parseFloat(key))
         }
     }
     return mostKey.sort((a,b) => a-b);
