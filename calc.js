@@ -1,4 +1,5 @@
 const express = require("express")
+const calcs = require("./calc-helpers")
 
 const app = express();
 
@@ -13,10 +14,18 @@ class ExpressError extends Error {
 
 app.get("/mean", function(request, response) {
     const ans = {operation: "mean"}
-    if(!request.query.nums) {
-        throw new ExpressError("missing required parameter: nums", 400)
+    let nums;
+    try {
+        nums = calcs.stringToNumericArray(request.query.nums)
     }
-    const nums = request.query.nums.split(",");
+    catch(error) {
+        let message = "missing required parameter: nums"
+        if (error.message) {
+            message = `${error.message} is not a number`
+        }
+        throw new ExpressError(message, 400)
+    }
+    
     let sum = 0;
     for(let i = 0; i < nums.length; i++) {
         if(isNaN(nums[i])) {
