@@ -69,7 +69,12 @@ function arrayMode(arr) {
             mostKey.push(parseFloat(key))
         }
     }
-    return mostKey.sort((a,b) => a-b);
+    if (mostFound===1) {
+        return [] // don't return anything if there aren't any repeats
+    }
+    else {
+        return mostKey.sort((a,b) => a-b);
+    }
 }
 
 module.exports = {CalcError, stringToNumericArray, arrayMean, arrayMedian, arrayMode}
