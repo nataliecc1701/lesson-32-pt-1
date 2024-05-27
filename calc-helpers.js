@@ -72,4 +72,4 @@ function arrayMode(arr) {
     return mostKey.sort((a,b) => a-b);
 }
 
-module.exports = {stringToNumericArray, arrayMean, arrayMedian, arrayMode}
+module.exports = {CalcError, stringToNumericArray, arrayMean, arrayMedian, arrayMode}
