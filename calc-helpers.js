@@ -19,3 +19,5 @@ function stringToNumericArray(str, sep=',') {
     nums.forEach(parseFloat)
     return nums
 }
+
+module.exports = {stringToNumericArray}
