@@ -69,7 +69,7 @@ function arrayMode(arr) {
             mostKey.push(key)
         }
     }
-    return mostKey;
+    return mostKey.sort((a,b) => a-b);
 }
 
 module.exports = {stringToNumericArray, arrayMean, arrayMedian, arrayMode}
