@@ -28,4 +28,16 @@ function arrayMean(arr) {
     return sum/arr.length
 }
 
-module.exports = {stringToNumericArray, arrayMean}
+// return the median of an array of numbers
+function arrayMedian(arr) {
+    const sortedArr = arr.sort((a,b) => a-b);
+    const len = sortedArr.length;
+    if (len % 2) {
+        return sortedArr[Math.floor(len/2)]
+    }
+    else {
+        return (sortedArr[len/2] + sortedArr[len/2 - 1])/2
+    }
+}
+
+module.exports = {stringToNumericArray, arrayMean, arrayMedian}
